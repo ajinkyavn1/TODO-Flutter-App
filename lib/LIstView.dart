@@ -22,6 +22,12 @@ class _LIstViewState extends State<LIstView> {
 
             return  Tasktiles(
               task: TaskData.tasks[index].TaskTitle,
+              CallBackCheck: (checkboxstate){
+                TaskData.UpdateTask(TaskData.tasks[index]);
+                setState(() {
+
+                });
+              },
               state:TaskData.tasks[index].isdone,);
           },
           itemCount: TaskData.getTaskcount(),

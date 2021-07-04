@@ -19,7 +19,7 @@ class TaskDataChange extends ChangeNotifier{
     _task.add(ta);
     notifyListeners();
   }
-  void UpdateTask(){
+  void UpdateTask(Tasks task){
     Tasks().ToggleDone();
     notifyListeners();
   }

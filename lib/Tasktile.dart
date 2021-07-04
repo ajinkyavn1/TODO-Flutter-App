@@ -4,8 +4,9 @@ import 'package:todoapp/Tasks.dart';
 class Tasktiles extends StatefulWidget {
   final String  task;
   final bool state;
+  final Function CallBackCheck;
 
-  const Tasktiles({Key key,@required this.task,@required this.state}) : super(key: key);
+  const Tasktiles({Key key,@required this.task,@required this.state, this.CallBackCheck}) : super(key: key);
 
   @override
   _TasktilesState createState() => _TasktilesState();
@@ -13,16 +14,12 @@ class Tasktiles extends StatefulWidget {
 
 class _TasktilesState extends State<Tasktiles> {
   bool ischecked=false;
-  void CheckBoxState(bool CheckBoxState){
-    // setState(() {
-    //   ischecked=CheckBoxState;
-    // });
-  }
+
   @override
   Widget build(BuildContext context) {
     return ListTile(
       title:Text(widget.task,style: TextStyle(decoration: ischecked?TextDecoration.lineThrough:null),),
-      trailing:checkbox(ischecked: ischecked,CheckBoXtoggele: CheckBoxState,)
+      trailing:checkbox(ischecked: ischecked,CheckBoXtoggele: widget.CallBackCheck,)
     );
   }
 }
