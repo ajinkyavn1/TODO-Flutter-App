@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:todoapp/DataChanngeNotify.dart';
 import 'package:todoapp/TaskScreen.dart';
-import 'package:todoapp/DataChanngeNotify.dart';
 void main() {
   runApp(MyApp());
 }
@@ -12,11 +11,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      builder: (context)=>TaskDataChange(),
+      create: (context)=>TaskDataChange(),
       child: MaterialApp(
         title: 'Flutter Demo',
         theme: ThemeData(
-
           primarySwatch: Colors.blue,
         ),
         home:TaskScreen()

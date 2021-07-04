@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:todoapp/DataChanngeNotify.dart';
+import 'package:todoapp/Tasks.dart';
 
 class AddTaskScreen extends StatelessWidget {
-  final Function AddTask;
-
-  const AddTaskScreen(this.AddTask);
   @override
   Widget build(BuildContext context) {
     String TaskTitle;
@@ -41,7 +41,8 @@ class AddTaskScreen extends StatelessWidget {
               SizedBox(height: 10,),
               FlatButton(
                   onPressed: (){
-                    AddTask(TaskTitle);
+                    Provider.of<TaskDataChange>(context,listen: false).addTask(TaskTitle);
+                    Navigator.pop(context);
                   },
                   child:Text("Add"),
                 color: Colors.lightBlueAccent,

@@ -25,12 +25,7 @@ class _MyHomePageState extends State<TaskScreen> {
         child: Icon(Icons.add),
         tooltip: "Add Task",
         onPressed: (){
-          showModalBottomSheet(context: context, builder: (context)=>AddTaskScreen((TaskTitle){
-            setState(() {
-              Provider.of<TaskDataChange>(context).task.add(Tasks(TaskTitle: TaskTitle));
-            });
-            Navigator.pop(context);
-          }));
+          showModalBottomSheet(context: context, builder: (context)=>AddTaskScreen());
         },
 
       ),
@@ -61,7 +56,7 @@ class _MyHomePageState extends State<TaskScreen> {
                 SizedBox(
                   height: 10,
                 ),
-                Text("${Provider.of<TaskDataChange>(context).task.length} Tasks",style: TextStyle(
+                Text("${Provider.of<TaskDataChange>(context,listen: true).getTaskcount()} Tasks",style: TextStyle(
                     fontWeight: FontWeight.w700,
                     color: Colors.white,
                     fontSize: 18

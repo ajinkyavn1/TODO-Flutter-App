@@ -16,13 +16,13 @@ class _LIstViewState extends State<LIstView> {
   @override
   Widget build(BuildContext context) {
     return Consumer<TaskDataChange>(
-      builder: (context,TaskData,Child){
+      builder: (context,TaskData,child){
         return  ListView.builder(
           itemBuilder: (context,index){
 
             return  Tasktiles(
-              task: TaskData.task[index].TaskTitle,
-              state:TaskData.task[index].isdone,);
+              task: TaskData.tasks[index].TaskTitle,
+              state:TaskData.tasks[index].isdone,);
           },
           itemCount: TaskData.getTaskcount(),
         );

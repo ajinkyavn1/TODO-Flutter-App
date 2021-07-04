@@ -1,15 +1,26 @@
+import 'dart:collection';
+import 'dart:typed_data';
+
 import 'package:flutter/foundation.dart';
 import 'package:todoapp/Tasks.dart';
 
 
 class TaskDataChange extends ChangeNotifier{
-  List<Tasks> task=[
-    Tasks(TaskTitle: "Egges"),
-    Tasks(TaskTitle: "Computer repair"),
-    Tasks(TaskTitle: "Do Array Problem "),
-    Tasks(TaskTitle: "Do Tree Problems")
+  List<Tasks> _task=[
   ];
+  UnmodifiableListView<Tasks>get tasks{
+    return UnmodifiableListView(_task);
+  }
   int getTaskcount(){
-    return task.length;
+    return _task.length;
+  }
+  void addTask(String newTask){
+    final ta=Tasks(TaskTitle: newTask);
+    _task.add(ta);
+    notifyListeners();
+  }
+  void UpdateTask(){
+    Tasks().ToggleDone();
+    notifyListeners();
   }
 }
