@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 
 class AddTaskScreen extends StatelessWidget {
-  const AddTaskScreen({Key  key}) : super(key: key);
+  final Function AddTask;
 
+  const AddTaskScreen(this.AddTask);
   @override
   Widget build(BuildContext context) {
+    String TaskTitle;
     return SingleChildScrollView(
       child: Container(
        // padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
@@ -29,13 +31,18 @@ class AddTaskScreen extends StatelessWidget {
               ),textAlign: TextAlign.center,),
               SizedBox(height: 10,),
               TextField(
+                onChanged: (value){
+                  TaskTitle=value;
+                },
                 cursorColor: Colors.blueAccent,
                 autofocus: true,
                 textAlign: TextAlign.center,
               ),
               SizedBox(height: 10,),
               FlatButton(
-                  onPressed: (){},
+                  onPressed: (){
+                    AddTask(TaskTitle);
+                  },
                   child:Text("Add"),
                 color: Colors.lightBlueAccent,
               )

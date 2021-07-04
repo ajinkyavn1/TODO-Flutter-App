@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todoapp/Tasks.dart';
 
 class Tasktiles extends StatefulWidget {
   final String  task;
@@ -34,6 +35,7 @@ class checkbox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Checkbox(
+      activeColor: Colors.lightBlueAccent,
       value: ischecked,
       onChanged: CheckBoXtoggele,
     );

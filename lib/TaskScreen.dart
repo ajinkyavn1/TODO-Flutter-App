@@ -1,20 +1,23 @@
 
 import 'package:flutter/material.dart';
+import 'package:todoapp/Tasks.dart';
 
 import 'AddTaskScreen.dart';
 import 'LIstView.dart';
 
 class TaskScreen extends StatefulWidget {
-  TaskScreen({Key key, this.title}) : super(key: key);
-
-
-  final String title;
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<TaskScreen> {
+  List<Tasks> task=[
+    Tasks(TaskTitle: "Egges"),
+    Tasks(TaskTitle: "Computer repair"),
+    Tasks(TaskTitle: "Do Array Problem "),
+    Tasks(TaskTitle: "Do Tree Problems")
+  ];
 
   var tasks=0;
   @override
@@ -25,7 +28,12 @@ class _MyHomePageState extends State<TaskScreen> {
         child: Icon(Icons.add),
         tooltip: "Add Task",
         onPressed: (){
-          showModalBottomSheet(context: context, builder: (context)=>AddTaskScreen());
+          showModalBottomSheet(context: context, builder: (context)=>AddTaskScreen((TaskTitle){
+            setState(() {
+              task.add(Tasks(TaskTitle: TaskTitle));
+            });
+            Navigator.pop(context);
+          }));
         },
 
       ),
@@ -56,7 +64,7 @@ class _MyHomePageState extends State<TaskScreen> {
                 SizedBox(
                   height: 10,
                 ),
-                Text("${tasks} Tasks",style: TextStyle(
+                Text("${task.length} Tasks",style: TextStyle(
                     fontWeight: FontWeight.w700,
                     color: Colors.white,
                     fontSize: 18
@@ -73,7 +81,7 @@ class _MyHomePageState extends State<TaskScreen> {
                       topRight: Radius.circular(25)
                   ),
               ),
-              child: LIstView()
+              child: LIstView(task:task,)
             ),
           )
         ],
