@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 
+import 'AddTaskScreen.dart';
 import 'LIstView.dart';
 
 class TaskScreen extends StatefulWidget {
@@ -23,7 +24,9 @@ class _MyHomePageState extends State<TaskScreen> {
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
         tooltip: "Add Task",
-        onPressed: (){},
+        onPressed: (){
+          showModalBottomSheet(context: context, builder: (context)=>AddTaskScreen());
+        },
 
       ),
       backgroundColor: Colors.lightBlueAccent,
