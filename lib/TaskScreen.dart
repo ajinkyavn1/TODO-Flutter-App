@@ -1,6 +1,8 @@
 
 import 'package:flutter/material.dart';
 
+import 'LIstView.dart';
+
 class TaskScreen extends StatefulWidget {
   TaskScreen({Key key, this.title}) : super(key: key);
 
@@ -18,6 +20,12 @@ class _MyHomePageState extends State<TaskScreen> {
   Widget build(BuildContext context) {
 
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+        tooltip: "Add Task",
+        onPressed: (){},
+
+      ),
       backgroundColor: Colors.lightBlueAccent,
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -60,8 +68,9 @@ class _MyHomePageState extends State<TaskScreen> {
                   borderRadius: BorderRadius.only(
                       topLeft:Radius.circular(25),
                       topRight: Radius.circular(25)
-                  )
+                  ),
               ),
+              child: LIstView()
             ),
           )
         ],
