@@ -1,5 +1,7 @@
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:todoapp/DataChanngeNotify.dart';
 import 'package:todoapp/Tasks.dart';
 
 import 'AddTaskScreen.dart';
@@ -12,12 +14,7 @@ class TaskScreen extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<TaskScreen> {
-  List<Tasks> task=[
-    Tasks(TaskTitle: "Egges"),
-    Tasks(TaskTitle: "Computer repair"),
-    Tasks(TaskTitle: "Do Array Problem "),
-    Tasks(TaskTitle: "Do Tree Problems")
-  ];
+
 
   var tasks=0;
   @override
@@ -30,7 +27,7 @@ class _MyHomePageState extends State<TaskScreen> {
         onPressed: (){
           showModalBottomSheet(context: context, builder: (context)=>AddTaskScreen((TaskTitle){
             setState(() {
-              task.add(Tasks(TaskTitle: TaskTitle));
+              Provider.of<TaskDataChange>(context).task.add(Tasks(TaskTitle: TaskTitle));
             });
             Navigator.pop(context);
           }));
@@ -64,7 +61,7 @@ class _MyHomePageState extends State<TaskScreen> {
                 SizedBox(
                   height: 10,
                 ),
-                Text("${task.length} Tasks",style: TextStyle(
+                Text("${Provider.of<TaskDataChange>(context).task.length} Tasks",style: TextStyle(
                     fontWeight: FontWeight.w700,
                     color: Colors.white,
                     fontSize: 18
@@ -81,7 +78,7 @@ class _MyHomePageState extends State<TaskScreen> {
                       topRight: Radius.circular(25)
                   ),
               ),
-              child: LIstView(task:task,)
+              child: LIstView()
             ),
           )
         ],

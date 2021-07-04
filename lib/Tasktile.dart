@@ -14,9 +14,9 @@ class Tasktiles extends StatefulWidget {
 class _TasktilesState extends State<Tasktiles> {
   bool ischecked=false;
   void CheckBoxState(bool CheckBoxState){
-    setState(() {
-      ischecked=CheckBoxState;
-    });
+    // setState(() {
+    //   ischecked=CheckBoxState;
+    // });
   }
   @override
   Widget build(BuildContext context) {
