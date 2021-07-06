@@ -23,4 +23,8 @@ class TaskDataChange extends ChangeNotifier{
     Tasks().ToggleDone();
     notifyListeners();
   }
+  void DeleteTask(int index)
+  {
+    //_task.remove()
+  }
 }

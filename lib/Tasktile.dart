@@ -1,25 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:todoapp/Tasks.dart';
 
-class Tasktiles extends StatefulWidget {
+class Tasktiles  extends StatelessWidget {
   final String  task;
   final bool state;
   final Function CallBackCheck;
-
-  const Tasktiles({Key key,@required this.task,@required this.state, this.CallBackCheck}) : super(key: key);
-
-  @override
-  _TasktilesState createState() => _TasktilesState();
-}
-
-class _TasktilesState extends State<Tasktiles> {
+  final Function CallBackDelete;
   bool ischecked=false;
+  Tasktiles({Key key, this.task, this.state, this.CallBackCheck, this.CallBackDelete}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      title:Text(widget.task,style: TextStyle(decoration: ischecked?TextDecoration.lineThrough:null),),
-      trailing:checkbox(ischecked: ischecked,CheckBoXtoggele: widget.CallBackCheck,)
+      onTap: (){
+        CallBackDelete;
+      },
+      title:Text(task,style: TextStyle(decoration: ischecked?TextDecoration.lineThrough:null),),
+      trailing:checkbox(ischecked: ischecked,CheckBoXtoggele: CallBackCheck(ischecked),)
     );
   }
 }
@@ -34,7 +31,9 @@ class checkbox extends StatelessWidget {
     return Checkbox(
       activeColor: Colors.lightBlueAccent,
       value: ischecked,
-      onChanged: CheckBoXtoggele,
+      onChanged:(value){
+        CheckBoXtoggele();
+      }
     );
   }
 }
